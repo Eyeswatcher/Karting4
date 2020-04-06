@@ -1,0 +1,13 @@
+
+{% extends 'medewerker.html.twig' %}
+
+{% block menu %}
+    <li><a href="{{ path('activiteitenoverzicht') }}">home</a></li>
+    <li><a href="{{ path('beheer') }}"><span class="badge">beheer</a></li>
+{% endblock %}
+{% block content %}
+
+
+    {{ include('soortactiviteit/_form.html.twig') }}
+
+{% endblock %}
