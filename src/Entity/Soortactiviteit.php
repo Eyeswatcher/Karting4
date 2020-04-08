@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -165,6 +166,37 @@ class Soortactiviteit
     public function getPrijs()
     {
         return $this->prijs;
+    }
+
+    /**
+     * @return Collection|Activiteit[]
+     */
+    public function getActiviteiten(): Collection
+    {
+        return $this->activiteiten;
+    }
+
+    public function addActiviteiten(Activiteit $activiteiten): self
+    {
+        if (!$this->activiteiten->contains($activiteiten)) {
+            $this->activiteiten[] = $activiteiten;
+            $activiteiten->setSoort($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActiviteiten(Activiteit $activiteiten): self
+    {
+        if ($this->activiteiten->contains($activiteiten)) {
+            $this->activiteiten->removeElement($activiteiten);
+            // set the owning side to null (unless already changed)
+            if ($activiteiten->getSoort() === $this) {
+                $activiteiten->setSoort(null);
+            }
+        }
+
+        return $this;
     }
 }
 

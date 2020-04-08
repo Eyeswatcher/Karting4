@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Activiteit;
+use App\Entity\User;
 use App\Form\Activiteit1Type;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

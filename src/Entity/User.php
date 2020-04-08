@@ -2,6 +2,9 @@
 // src/App/Entity/User.php
 namespace App\Entity;
 
+use App\Entity\Activiteit;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -332,5 +335,31 @@ $this->password,
 // see section on salt below
 // $this->salt
 ) = unserialize($serialized);
+}
+
+/**
+ * @return Collection|Activiteit[]
+ */
+public function getActiviteiten(): Collection
+{
+    return $this->activiteiten;
+}
+
+public function addActiviteiten(Activiteit $activiteiten): self
+{
+    if (!$this->activiteiten->contains($activiteiten)) {
+        $this->activiteiten[] = $activiteiten;
+    }
+
+    return $this;
+}
+
+public function removeActiviteiten(Activiteit $activiteiten): self
+{
+    if ($this->activiteiten->contains($activiteiten)) {
+        $this->activiteiten->removeElement($activiteiten);
+    }
+
+    return $this;
 }
 }

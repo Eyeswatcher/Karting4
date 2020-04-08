@@ -43,7 +43,8 @@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ path('app_logout') }}">{{ app.user.username }} uitloggen</a></li>
+                        <li><a href="{{ path('app_logout') }}">uitloggen</a></li>
+                        <li><a href="{{ path('user_show', {'id': app.user.id}) }}">{{ app.user.username }}</a></li>
                     </ul>
                 </div>
             </div>
